@@ -82,11 +82,12 @@ function render() {
     geo: {
       map: 'china',
       roam: true, // 缩放、平移
+      // aspectScale: 0.8,
       scaleLimit: {
         min: 1,
         max: 5,
       },
-      zoom: 2,
+      zoom: 1.2,
       label: {
         show: true,
         formatter: ({ name }) => {
@@ -109,17 +110,30 @@ function render() {
             color: 'rgba(147, 235, 248, .2)' // 100% 处的颜色
           }],
         },
+        // 边框
         borderColor: 'rgba(200, 200, 200, .5)',
+        borderWidth: 1.5,
+        borderCap: 'round',
+        borderType: 'dashed',
+        // 阴影
+        // shadowColor: 'rgba(147, 235, 248, .8)',
+        // shadowOffsetX: 0,
+        // shadowOffsetY: 15,
       },
     },
     // tooltip: {},
     series: [{
       type: 'map',
       geoIndex: 0,
+      // map: 'china',
       data: [{
         name: '广东省',
         value: 30
-      }]
+      }],
+      projection: {
+        project: (point) => [point[0] / 180 * Math.PI, -Math.log(Math.tan((Math.PI / 2 + point[1] / 180 * Math.PI) / 2))],
+        unproject: (point) => [point[0] * 180 / Math.PI, 2 * 180 / Math.PI * Math.atan(Math.exp(point[1])) - 90]
+      }
     }, {
       type: 'effectScatter',
       coordinateSystem: 'geo',
@@ -164,8 +178,8 @@ function render() {
       // 线条
       lineStyle: {
         color: 'cyan',
-        width: 0.5,
-        type: 'dashed',
+        width: 1.5,
+        type: 'solid',
         curveness: 0.1, // 线条的曲度
       }
     }]
