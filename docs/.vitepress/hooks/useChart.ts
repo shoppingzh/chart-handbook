@@ -20,9 +20,10 @@ export default function(
   const loadingRef = computed(() => unref(loading))
 
   const resetOption = () => {
-    if (!chart.value) return
+    if (!chart.value || !optionRef.value) return
     chart.value.setOption(optionRef.value, {
-      notMerge: true
+      notMerge: true,
+      lazyUpdate: true
     })
   }
 
