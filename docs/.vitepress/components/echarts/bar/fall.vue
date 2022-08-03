@@ -32,7 +32,9 @@ const options = computed<echarts.EChartsOption>(() => ({
     type: 'category'
   },
   yAxis: {},
-  tooltip: {},
+  tooltip: {
+    trigger: 'axis'
+  },
   legend: {},
   series: [{
     type: 'bar',
@@ -40,7 +42,10 @@ const options = computed<echarts.EChartsOption>(() => ({
     itemStyle: {
       color: 'rgba(0, 0, 0, 0)'
     },
-    stack: '1'
+    stack: '1',
+    tooltip: {
+      show: false
+    }
   }, {
     type: 'bar',
     data: [START, ...offsets.map(o => Math.abs(o))],
