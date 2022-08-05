@@ -48,7 +48,12 @@ const options = computed<echarts.EChartsOption>(() => ({
     }
   }, {
     type: 'bar',
-    data: [START, ...offsets.map(o => Math.abs(o))],
+    data: [START, ...offsets].map(value => ({
+      value: Math.abs(value),
+      itemStyle: {
+        color: value < 0 ? 'red' : 'green'
+      }
+    })),
     stack: '1',
     barWidth: 20,
     label: {
