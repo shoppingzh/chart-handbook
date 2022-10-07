@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import * as echarts from 'echarts'
 import { computed, nextTick, onMounted, onUnmounted, reactive, ref, watch, watchEffect } from 'vue'
-import { random } from 'lodash'
+import { random } from 'lodash-es'
 import useChart from '@/hooks/useChart'
 
 interface Loc {
