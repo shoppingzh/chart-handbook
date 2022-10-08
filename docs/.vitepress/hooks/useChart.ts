@@ -1,7 +1,7 @@
 import { computed, onMounted, onUnmounted, Ref, ref, shallowRef, unref, watch } from 'vue'
 import * as echarts from 'echarts'
 import { useWindowSize } from '@vueuse/core'
-import { throttle } from 'lodash'
+import { throttle } from 'lodash-es'
 
 function onWindowResize(callback: () => void) {
   const { width: windowWidth } = useWindowSize()

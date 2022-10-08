@@ -6,7 +6,7 @@
 import useChart from '@/hooks/useChart'
 import { EChartsOption } from 'echarts'
 import { computed, ref } from 'vue'
-import { random } from 'lodash'
+import { random } from 'lodash-es'
 
 const data = ref(new Array(12).fill(null).map((_, index) => {
   return {
